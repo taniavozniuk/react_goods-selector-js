@@ -16,7 +16,7 @@ export const goods = [
 ];
 
 export const App = () => {
-  const [massege, SetMassege] = useState('Jam is selected');
+  const [message, SetMessage] = useState('Jam is selected');
   const [selectedGood, setSelectedGood] = useState('Jam');
 
   return (
@@ -50,11 +50,11 @@ export const App = () => {
                   className={`button ${selectedGood === good ? 'is-info' : ''}`}
                   onClick={() => {
                     if (selectedGood === good) {
-                      SetMassege('Jam is selected');
+                      SetMessage('Jam is selected');
                       setSelectedGood('');
                     } else {
                       setSelectedGood(good);
-                      SetMassege(`${good} is selecred`);
+                      SetMessage(`${good} is selecred`);
                     }
                   }}
                 >
