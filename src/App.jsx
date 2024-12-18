@@ -36,12 +36,18 @@ export const App = () => {
       <table className="table">
         <tbody>
           {goods.map(good => (
-            <tr data-cy="Good">
+            <tr
+              data-cy="Good"
+              key={good}
+              className={
+                selectedGood === good ? 'has-background-success-light' : ''
+              }
+            >
               <td>
                 <button
                   data-cy={selectedGood === good ? 'RemoveButton' : 'AddButton'}
                   type="button"
-                  className="button"
+                  className={`button ${selectedGood === good ? 'is-info' : ''}`}
                   onClick={() => {
                     if (selectedGood === good) {
                       SetMassege('Jam is selected');
