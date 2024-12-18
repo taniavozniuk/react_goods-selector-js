@@ -16,22 +16,21 @@ export const goods = [
 ];
 
 export const App = () => {
-  const [massege, SetMassege] = useState('Jam is selected');
+  const [SetMassege] = useState('Jam is selected');
   const [selectedGood, setSelectedGood] = useState('Jam');
 
   return (
     <main className="section container">
       <h1 className="title is-flex is-align-items-center">
-        {massege}
-        <button
-          data-cy="ClearButton"
-          type="button"
-          className="delete ml-3"
-          onClick={() => {
-            setSelectedGood(goods);
-            SetMassege(`No is selected`);
-          }}
-        />
+        {selectedGood ? `${selectedGood} is selected` : 'No goods selected'}
+        {selectedGood && (
+          <button
+            data-cy="ClearButton"
+            type="button"
+            className="delete ml-3"
+            onClick={() => setSelectedGood('')}
+          />
+        )}
       </h1>
 
       <table className="table">
