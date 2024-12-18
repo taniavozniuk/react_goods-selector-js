@@ -16,7 +16,7 @@ export const goods = [
 ];
 
 export const App = () => {
-  const [SetMassege] = useState('Jam is selected');
+  const [massege, SetMassege] = useState('Jam is selected');
   const [selectedGood, setSelectedGood] = useState('Jam');
 
   return (
@@ -39,15 +39,20 @@ export const App = () => {
             <tr data-cy="Good">
               <td>
                 <button
-                  data-cy="AddButton"
+                  data-cy={selectedGood === good ? 'RemoveButton' : 'AddButton'}
                   type="button"
                   className="button"
                   onClick={() => {
-                    setSelectedGood(good);
-                    SetMassege(`${good} is selected`);
+                    if (selectedGood === good) {
+                      SetMassege('Jam is selected');
+                      setSelectedGood('');
+                    } else {
+                      setSelectedGood(good);
+                      SetMassege(`${good} is selecred`);
+                    }
                   }}
                 >
-                  +
+                  {selectedGood === good ? '-' : '+'}
                 </button>
               </td>
 
@@ -56,26 +61,6 @@ export const App = () => {
               </td>
             </tr>
           ))}
-
-          <tr data-cy="Good">
-            <td>
-              <button
-                data-cy="RemoveButton"
-                type="button"
-                className="button is-info"
-                onClick={() => {
-                  setSelectedGood(null);
-                  SetMassege('No goods Selected');
-                }}
-              >
-                -
-              </button>
-            </td>
-
-            <td data-cy="GoodTitle" className="is-vcentered">
-              Jam
-            </td>
-          </tr>
         </tbody>
       </table>
     </main>
